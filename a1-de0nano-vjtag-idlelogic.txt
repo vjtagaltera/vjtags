@@ -1,0 +1,57 @@
+
+http://idle-logic.com/2012/04/15/talking-to-the-de0-nano-using-the-virtual-jtag-interface/
+2018 2 21
+
+
+Talking to the DE0-Nano using the Virtual JTAG interface.
+
+
+ How to communicate between a PC and a design running on the DE0-Nano using 
+ the Virtual JTAG Megafunction, a Tcl TCP/IP Server running in quartus_stp 
+ with virtually any programming language.
+
+*07/05/14 – Reader Paul Green has extended this post’s idea and built 
+ a virtual com port for talking to the DE0-Nano. Check out his very well 
+ written vj-uart project on [GitHub](https://github.com/binary-logic/vj-uart). 
+ [Here is my tutorial on how to use vj-uart]
+ (http://idle-logic.com/2014/07/12/virtual-com-port-connection-de0-nano-vj-uart/).
+ 
+*04/18/14 – See the comments below for the new open_sld project from 
+ Vern Muhr which allows direct access to the Virtual JTAG interface 
+ (using Python) without the TCP/IP TCL pipe described in this article.
+ https://github.com/GeezerGeek/open_sld
+
+The first thing I wondered when I got my hands on the DE0-Nano was how best 
+to communicate with a design inside the FPGA. Initially, I assumed that with 
+the USB connection onboard there would be some form of UART connected to 
+a few of the FGPA Pins. Unfortunately, this was not the case.
+
+I sent an email to the creators of the DE0-Nano, terasIC asking how best to 
+go about communicating with a design and their application engineer recommended 
+adding a second USB connection with something like the FTDI 232RL USB to UART Bridge.
+
+I was still convinced there had to be a more elegant way. Fortunately, 
+I came across [this post](http://www.alteraforum.com/forum/showthread.php?t=32354&page=3) 
+on the Altera forums talking about the Virtual JTAG interface. Thanks to 
+those pointers from the ever helpful Dave, the seed was planted for the solution 
+presented below.
+
+
+Virtual JTAG Example – Blinky Lights
+
+To demonstrate this functionality I put together a project that uses the DE0-Nano LEDs 
+to count from 0 to 128 in binary, all at the command of a Python script. Nothing better 
+than some flashing lights to demonstrate a new technique.
+
+    https://youtu.be/AkjO1nSEXsY
+
+Download the Project Files
+
+Here I’m attaching the project files, then below I’ll discuss how everything works. 
+I’ve uploaded the files as an Archived Quartus Project (inside a ZIP file since 
+WordPress doesn’t like .qar file types), this contains all of the Quartus Design Files 
+(in Verilog), the Tcl Server Script and the Python File. Let me know in the comments 
+if you would prefer the raw files outside a QAR file instead. (Or both?)
+
+    http://idle-logic.com/wp-content/uploads/2012/04/vJTAG_DE0-Nano_Example.zip
+

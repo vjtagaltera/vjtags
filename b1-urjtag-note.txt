@@ -1,0 +1,11 @@
+
+search urjtag git
+
+https://github.com/shuckc/urjtag
+https://github.com/luke-jr/urjtag
+http://repo.or.cz/w/urjtag.git git://urjtag.git.sourceforge.net/gitroot/urjtag/urjtag
+
+
+b2-nxp-howto-understand-jtag-bsdl.pdf
+    openocd -irlen , -ircapture , -irmask , tag id
+
