@@ -9,3 +9,39 @@ http://repo.or.cz/w/urjtag.git git://urjtag.git.sourceforge.net/gitroot/urjtag/u
 b2-nxp-howto-understand-jtag-bsdl.pdf
     openocd -irlen , -ircapture , -irmask , tag id
 
+
+ubuntu udev for usb jtag: 
+
+  echo 'SUBSYSTEM=="usb",ATTRS{idProduct}=="002b",ATTRS{idVendor}=="15ba",MODE="0666"' > /etc/udev/rules.d/77-arm-ocd-h.rules
+  echo 'SUBSYSTEM=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="09fb",MODE="0666"' > /etc/udev/rules.d/78-usb-blaster.rules
+  service udev restart
+
+  example query for FooDev : 
+    lsusb
+      Bus 001 Device 003: ID 1111:2222 FooDev
+    udevadm info -a -p $(udevadm info -q path -n /dev/bus/usb/001/003)
+
+
+ubuntu 16.04 build and run urjtag: 
+
+  apt-get install dh-autoreconf libftdi-dev python-dev libbison-dev flex
+
+  git clone https://git.code.sf.net/p/urjtag/git urjtag-git
+  cd urjtag-git/urjtag
+  ./autogen.sh --enable-svf --enable-bsdl
+  ./configure --prefix=$HOME/bin/ujt  ## this does not seem to work. why?
+  make
+  make install  ## or with sudo if global install
+  ##LD_LIBRARY_PATH=/usr/local/lib jtag  ## when installed to /
+  ~/bin/ujt/bin/jtag
+
+
+bsdl and svf example:
+
+  b3-EP4CE22F17.bsd for EP4CE22F17C6N bsdl: 
+    save it to the current directory and point to the folder in urjtag by `bsdl path .`
+
+  http://dangerousprototypes.com/docs/Bus_Blaster_urJTAG_guide
+  coonect: `cable ft2232 pid=0x6010 vid=0x0403 interface=0`
+  flash: `svf c:\bbv2.svf stop progress`
+
