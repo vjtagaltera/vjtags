@@ -55,3 +55,9 @@ if you would prefer the raw files outside a QAR file instead. (Or both?)
 
     http://idle-logic.com/wp-content/uploads/2012/04/vJTAG_DE0-Nano_Example.zip
 
+This code was developed and derived with the help of some examples from the Altera Wiki: 
+
+    http://www.alterawiki.com/wiki/FPGA_Debugging_Example_with_Sources,_Probes,_and_Virtual_JTAG
+    http://www.alterawiki.com/uploads/5/52/DC_FIFO.zip
+    http://www.alterawiki.com/uploads/9/94/DC_FIFO_VJI.zip
+

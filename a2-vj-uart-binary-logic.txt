@@ -1,0 +1,15 @@
+
+
+search quartus virtual jtag example
+
+https://nhiphanlogic.wordpress.com/2014/07/05/virtual-uart-for-the-terasic-de0-nano/
+Virtual UART for the Terasic DE0-Nano
+Posted on 05/07/2014 by Binary Logic	
+
+The quickest way to get started is to run the pre-compiled images provided here.  
+    https://docs.google.com/uc?export=download&id=0B-itgUKokF0ieXNJMjJLcDZ5elk
+    vjtag-uart.zip
+
+When you’re ready to incorporate this into your own design, all source is available 
+on Github.
+
