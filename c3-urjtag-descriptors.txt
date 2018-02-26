@@ -1,0 +1,51 @@
+diff -Naur urjtag-orig/altera/ep4ce22/ep4ce22 urjtag/altera/ep4ce22/ep4ce22
+--- urjtag-orig/altera/ep4ce22/ep4ce22	1970-01-01 10:00:00.000000000 +1000
++++ urjtag/altera/ep4ce22/ep4ce22	2014-07-30 21:48:09.652857260 +1000
+@@ -0,0 +1,12 @@
++instruction length 10
++register DIR 32
++register USERCODE 32
++register BSR 732
++register BYPASS 1
++instruction HIGHZ 0000001011 BYPASS
++instruction CLAMP 0000001010 BYPASS
++instruction USERCODE 0000000111 USERCODE
++instruction IDCODE 0000000110 DIR
++instruction SAMPLE/PRELOAD 0000000101 BSR
++instruction EXTEST 0000001111 BSR
++instruction BYPASS 1111111111 BYPASS
+diff -Naur urjtag-orig/altera/ep4ce22/STEPPINGS urjtag/altera/ep4ce22/STEPPINGS
+--- urjtag-orig/altera/ep4ce22/STEPPINGS	1970-01-01 10:00:00.000000000 +1000
++++ urjtag/altera/ep4ce22/STEPPINGS	2014-07-30 21:48:09.644857260 +1000
+@@ -0,0 +1,23 @@
++#
++# $Id: STEPPINGS 897 2007-12-29 13:02:32Z arniml $
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License
++# as published by the Free Software Foundation; either version 2
++# of the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++# 02111-1307, USA.
++#
++# Written by H Hartley Sweeten <hsweeten@visionengravers.com>
++#
++
++# bits 31-28 of the Device Identification Register
++0000	ep4ce22		0
+diff -Naur urjtag-orig/altera/PARTS urjtag/altera/PARTS
+--- urjtag-orig/altera/PARTS	2014-07-28 22:19:56.968449502 +1000
++++ urjtag/altera/PARTS	2014-07-30 21:48:08.464857263 +1000
+@@ -26,3 +26,4 @@
+ 0111000100101000	epm7128aetc100		EPM7128AETC100
+ 0111000001100100	epm3064a		EPM3064A
+ 0010000010110010	ep2c8			EP2C8
++0010000011110011	ep4ce22			EP4CE22

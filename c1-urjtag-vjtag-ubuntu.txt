@@ -1,0 +1,59 @@
+
+search quartus virtual jtag example
+2018-2-25
+
+
+https://nhiphanlogic.wordpress.com/2014/07/28/urjtag-and-python-a-lightweight-hal/
+
+https://intelligenttoasters.blog/2014/07/05/virtual-uart-for-the-terasic-de0-nano/
+https://intelligenttoasters.blog/2014/07/28/urjtag-and-python-a-lightweight-hal/
+
+
+The pre-requisites for this installation are:
+
+    A linux installation (sorry Windows users, I’ll come back to you another time)
+    Installed Bison 3.0.2, Flex 2.5.35, Python 2.7.6, autotools-dev, libftdi-dev plus the other dependencies in section 2.4 of the documentation (gettext, readline-dev)
+    If you need it, you can also install the FTDI D2xx library
+    You’ll also need SVN installed to download the source files
+
+Source 2041: patch for bsdl seg fault
+
+    svn checkout -r 2041 svn://svn.code.sf.net/p/urjtag/svn/trunk urjtag-svn
+
+    https://docs.google.com/uc?export=download&id=0B-itgUKokF0iYVUyUnlld2RFd0E 
+    urpatch.txt
+
+    patch -p1 < urpatch.txt
+
+There are two ways to describe the chip to UrJTAG:
+
+    Use a BSDL file – Your Quartus project can be configured to output these after 
+            compilation of your design.
+    Update the shared UrJTAG reference directories.
+
+Going with option 2 because the BSDL subsystem isn’t available from the Python interface 
+and the Python bindings are what we’re really after.  The bindings can be found 
+in /usr/local/lib and /usr/local/lib/python2.7/dist-packages.  Use the following command 
+to see what’s been installed on your system:
+
+    find /usr/local -name '*urjtag*' -type f
+
+Download and patch:
+
+    https://docs.google.com/uc?export=download&id=0B-itgUKokF0iTnM0SWx3TzhQMTA
+    urjtag-descriptors.txt
+
+    cd /usr/local/share/urjtag
+    sudo patch -p1 < urjtag-descriptors.txt
+
+Python stub:
+
+    https://docs.google.com/uc?export=download&id=0B-itgUKokF0iQXlJVUdLWUl4MVk
+    DE0_Comm.svf
+
+    https://docs.google.com/uc?export=download&id=0B-itgUKokF0iWDBOUVhVOXlTcFE
+    my.py
+
+    cd urjtag-svn/urjtag/bindings/python
+    python my.py
+
