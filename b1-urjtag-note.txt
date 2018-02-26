@@ -20,6 +20,7 @@ ubuntu udev for usb jtag:
     lsusb
       Bus 001 Device 003: ID 1111:2222 FooDev
     udevadm info -a -p $(udevadm info -q path -n /dev/bus/usb/001/003)
+    udevadm test $(udevadm info -q path -n /dev/bus/usb/001/003)
 
 
 ubuntu 16.04 build and run urjtag: 
