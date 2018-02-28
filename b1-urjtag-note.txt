@@ -2,7 +2,7 @@
 search urjtag git
 
 https://github.com/shuckc/urjtag
-https://github.com/luke-jr/urjtag
+https://github.com/luke-jr/urjtag
 http://repo.or.cz/w/urjtag.git git://urjtag.git.sourceforge.net/gitroot/urjtag/urjtag
 
 
@@ -43,6 +43,70 @@ bsdl and svf example:
     save it to the current directory and point to the folder in urjtag by `bsdl path .`
 
   http://dangerousprototypes.com/docs/Bus_Blaster_urJTAG_guide
-  coonect: `cable ft2232 pid=0x6010 vid=0x0403 interface=0`
-  flash: `svf c:\bbv2.svf stop progress`
+    connect: `cable ft2232 pid=0x6010 vid=0x0403 interface=0`
+    flash: `svf c:\bbv2.svf stop progress`
+
+
+usbblaster discovery:
+
+  tag> cable UsbBlaster
+  Connected to libftdi driver.
+  jtag> detect
+  IR length: 10
+  Chain length: 1
+  Device Id: 00000010000011110011000011011101 (0x020F30DD)
+  [[  Filename:     .//EP4CE22F17.bsd
+  jtag> discovery
+  Detecting IR length ... 10
+  Detecting DR length for IR 1111111111 ... 1
+  Detecting DR length for IR 0000000000 ... 1
+  Detecting DR length for IR 0000000001 ... 1
+  Detecting DR length for IR 0000000010 ... 1
+  Detecting DR length for IR 0000000011 ... 1
+  Detecting DR length for IR 0000000100 ... 732
+  Detecting DR length for IR 0000000101 ... 732
+  Detecting DR length for IR 0000000110 ... 32
+  Detecting DR length for IR 0000000111 ... 32
+  Detecting DR length for IR 0000001000 ... 732
+  Detecting DR length for IR 0000001001 ... 1
+  Detecting DR length for IR 0000001010 ... 1
+  Detecting DR length for IR 0000001011 ... 1
+  Detecting DR length for IR 0000001100 ... 4
+  Detecting DR length for IR 0000001101 ... -1
+  Detecting DR length for IR 0000001110 ... 11
+  Detecting DR length for IR 0000001111 ... 732
+  Detecting DR length for IR 0000010000 ... 1
+  Detecting DR length for IR 0000010001 ... 1
+  Detecting DR length for IR 0000010010 ... 1
+  Detecting DR length for IR 0000010011 ... 1
+  Detecting DR length for IR 0000010100 ... 1
+  Detecting DR length for IR 0000010101 ... 32
+  Detecting DR length for IR 0000010110 ... 1
+  Detecting DR length for IR 0000010111 ... 1
+  Detecting DR length for IR 0000011000 ... 1
+  Detecting DR length for IR 0000011001 ... 1
+  Detecting DR length for IR 0000011010 ... 1
+  Detecting DR length for IR 0000011011 ... 1
+  Detecting DR length for IR 0000011100 ... 1
+  Detecting DR length for IR 0000011101 ... 1
+  Detecting DR length for IR 0000011110 ... 1
+  Detecting DR length for IR 0000011111 ... 1
+
+
+openocd olimex arm-usb-ocd-h arm926ejs:
+
+  apt-get install libusb-1.0-0-dev
+
+  git clone http://git.code.sf.net/p/openocd/code ocd
+  cd ocd/
+  ./bootstrap 
+  ./configure --prefix=$HOME/bin/ocd --enable-ftdi --enable-ft2232_ftd2xx
+  make
+  make install
+  cd 
+  cd bin/ocd/share/openocd/scripts/
+  ~/bin/ocd/bin/openocd -f interface/ftdi/olimex-arm-usb-ocd-h.cfg -f target/lpc3250.cfg 
+
+  ## note that, added adapter_khz 10 to the target file. and edit to remove the address etc...
+
 
