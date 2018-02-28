@@ -1,0 +1,24 @@
+
+-rw-r--r-- 1    3038 Feb 25 12:58 a1-de0nano-vjtag-idlelogic.txt
+-rw-r--r-- 1   35317 Feb 21 22:19 a1-vJTAG_DE0-Nano_Example.zip
+-rw-r--r-- 1   48919 Feb 25 13:01 a2-vj-uart.zip
+-rw-r--r-- 1     495 Feb 25 13:05 a2-vj-uart-binary-logic.txt
+-rw-r--r-- 1   48956 Feb 21 22:44 a2-vj-uart-master.zip
+-rw-r--r-- 1   39331 Feb 21 22:45 a3-open_sld-master.zip
+-rw-r--r-- 1  493186 Feb 21 22:46 a4-ixo-jtag-code-204.zip
+-rw-r--r-- 1  257144 Feb 25 12:59 a5-DC_FIFO.zip
+-rw-r--r-- 1  296015 Feb 25 12:59 a5-DC_FIFO_VJI.zip
+drwxr-xr-x 1       0 Feb 23 22:25 alteradoc/
+-rw-r--r-- 1    1621 Feb 26 08:27 b1-urjtag-note.txt
+-rw-r--r-- 1  431655 Feb 19 22:57 b2-nxp-howto-understand-jtag-bsdl.pdf
+-rw-r--r-- 1   50611 Feb 24 13:05 b3-EP4CE22F17.bsd
+-rw-r--r-- 1  502338 Feb 26 08:47 c1-intelligent-toaster-urjtag-hal.pdf
+-rw-r--r-- 1    2074 Feb 26 08:53 c1-urjtag-vjtag-ubuntu.txt
+-rw-r--r-- 1    1664 Feb 26 08:36 c2-urpatch.txt
+-rw-r--r-- 1    2118 Feb 26 08:42 c3-urjtag-descriptors.txt
+-rw-r--r-- 1 1450384 Feb 26 08:48 c4-DE0_Comm.svf
+-rwxr-xr-x 1    2788 Feb 26 08:50 c5-my.py*
+drwxr-xr-x 1       0 Feb 21 22:51 vj-uart-master/
+-rw-r--r-- 1       0 Feb 26 08:55 zfiles-list
+
+
