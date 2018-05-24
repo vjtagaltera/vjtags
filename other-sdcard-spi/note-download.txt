@@ -1,0 +1,46 @@
+
+may 23 2018
+
+
+http://users.ece.utexas.edu/~valvano/EE345M/SD_Physical_Layer_Spec.pdf
+
+
+http://www.dejazzer.com/ee379/lecture_notes/lec12_sd_card.pdf
+http://elm-chan.org/docs/mmc/mmc_e.html
+
+http://elm-chan.org/fsw/ff/00index_e.html
+http://elm-chan.org/fsw/ff/00index_p.html
+http://elm-chan.org/fsw/ff/doc/config.html
+http://elm-chan.org/fsw/ff/doc/appnote.html
+http://elm-chan.org/fsw/ff/arc/ff13b.zip
+
+
+http://elm-chan.org/fsw/ff/patches.html
+Known Problems
+
+FatFs R0.13b has been released at April 7, 2018. These are the verified problems about FatFs R0.13b and its workaround or patch.
+
+1. May 23, 2018
+--------------------------------------------------------------------------------------------------
+Reading a directory gets infinite loop.
+Successive f_readdir() calls would not detect the end of directory if the directory was filled up
+and the last entry is not empty. To fix this problem, apply ff13b_p1.diff to the ff.c.
+
+
+http://elm-chan.org/fsw/ff/ff13b_p1.diff
+--- ff.c	Sat Apr  7 17:45:22 2018
++++ ff13b_p1.c	Wed May 23 21:20:07 2018
+@@ -1728,7 +1728,8 @@
+ 
+ 
+ 	ofs = dp->dptr + SZDIRE;	/* Next entry */
+-	if (dp->sect == 0 || ofs >= (DWORD)((FF_FS_EXFAT && fs->fs_type == FS_EXFAT) ? MAX_DIR_EX : MAX_DIR)) return FR_NO_FILE;	/* Report EOT when offset has reached max value */
++	if (ofs >= (DWORD)((FF_FS_EXFAT && fs->fs_type == FS_EXFAT) ? MAX_DIR_EX : MAX_DIR)) dp->sect = 0;	/* Disable it if the offset reached the max value */
++	if (dp->sect == 0) return FR_NO_FILE;	/* Report EOT if it has been disabled */
+ 
+ 	if (ofs % SS(fs) == 0) {	/* Sector changed? */
+ 		dp->sect++;				/* Next sector */
+
+
+http://www.varsanofiev.com/inside/WritingLinuxSDIODrivers.htm
+
