@@ -1,0 +1,46 @@
+
+
+~/dockr$ cat bb.bash 
+#!/bin/bash
+
+# current uid and gid
+curr_uid=`id -u`
+curr_gid=`id -g`
+
+# create bb.dockerfile:
+cat << EOF2 > bb.dockerfile
+ FROM ubuntu:xenial-20180417
+ ARG UNAME=testuser
+ ARG UID=1000
+ ARG GID=1000
+ RUN groupadd -g \$GID \$UNAME
+ RUN useradd -m -u \$UID -g \$GID -s /bin/bash \$UNAME
+
+ RUN apt-get update
+ RUN apt-get install -y openssh-server openssh-client iputils-ping sudo
+ RUN apt-get install -y lsb-release libgtk2.0 xterm vim rsync sshpass
+ RUN mkdir /var/run/sshd
+ RUN echo 'testuser:screencast' | chpasswd
+ RUN sed -i -e '/sudo/ s/$/testuser/' /etc/group
+
+ ENV NOTVISIBLE "in users profile"
+ RUN echo "export VISIBLE=now" >> /etc/profile
+
+ EXPOSE 22
+ CMD ["/usr/sbin/sshd", "-D"]
+EOF2
+
+docker build --build-arg UID=${curr_uid} --build-arg GID=${curr_gid} \
+    -f bb.dockerfile -t testimg .
+
+# USER \$UNAME
+# CMD /bin/bash
+
+#creating the container: 
+# docker run -it -d \
+#     -v /tmp/.X11-unix:/tmp/.X11-unix  \
+#     -v $HOME:/home/testuser \
+#     -p 2022:22 \
+#     --name testcont -P testimg
+# 
+
