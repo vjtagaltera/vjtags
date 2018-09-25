@@ -1,0 +1,9 @@
+
+search fpga sdio core
+
+
+https://hackaday.io/project/7500-nyx-edison-fpga-devboard/log/24952-sdio
+
+using cocotb cosimulate the sdio host controller and device
+
+
