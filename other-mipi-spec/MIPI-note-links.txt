@@ -1,0 +1,18 @@
+﻿
+search csi 2 specification 
+
+MIPI_Alliance_Specification_for_Camera_Serial_Interface_2__CSI_2_.pdf
+    http://electronix.ru/forum/index.php?act=Attach&type=post&id=67362
+
+
+search mipi d-phy specification
+
+
+MIPI_D-PHY_Specification_v01-00-00.pdf
+    https://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwihxLTT0oXaAhVGrFQKHR7oC-0QFghWMAI&url=http%3A%2F%2Fdiyprojector.info%2Fforum%2Findex.php%3Fapp%3Dcore%26module%3Dattach%26section%3Dattach%26attach_id%3D27737&usg=AOvVaw1XbY5AWcu2dIA7gHPoj4Nv
+    or decoded http://diyprojector.info/forum/index.php?app=core&module=attach&section=attach&attach_id=27737
+
+axie_u4421a_mipi_d-phy_protocol_fundamentals_detailed_presentation.pdf
+    http://rfmw.em.keysight.com/mod/pdf/axie_u4421a_mipi_d-phy_protocol_fundamentals_detailed_presentation.pdf
+
+
